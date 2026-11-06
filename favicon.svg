@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Favicon Rogério Lanches e Porções">
+  <defs>
+    <linearGradient id="favGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE14D" />
+      <stop offset="100%" stop-color="#FFB800" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Circle Gold Rim -->
+  <circle cx="32" cy="32" r="31" fill="url(#favGold)" />
+  <!-- Inner Dark Circle -->
+  <circle cx="32" cy="32" r="28" fill="#0D0D0D" />
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="url(#favGold)" stroke-width="1" opacity="0.75" />
+
+  <!-- Crisp Burger Vector Icon Centered -->
+  <g fill="none" stroke="url(#favGold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top Bun -->
+    <path d="M 17 24 A 15 12 0 0 1 47 24 Z" fill="#0D0D0D" />
+    <!-- Sesame Highlight -->
+    <path d="M 23 16.5 A 11 8 0 0 1 38 16" stroke-width="1.8" />
+    <!-- Cheese Wavy Line -->
+    <path d="M 16.5 29.5 Q 20.5 27 24.2 29.5 T 32 29.5 T 39.8 29.5 T 47.5 29.5" />
+    <!-- Burger Patty -->
+    <rect x="16.5" y="33" width="31" height="5" rx="2.5" fill="url(#favGold)" />
+    <!-- Bottom Bun -->
+    <path d="M 18 41.5 L 46 41.5 A 4.5 4.5 0 0 1 41.5 46 L 22.5 46 A 4.5 4.5 0 0 1 18 41.5 Z" />
+  </g>
+</svg>
+

@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0D0D0D">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rogério Lanches">
+  <meta name="format-detection" content="telephone=no">
+
+  <title>Rogério Lanches &amp; Porções | Os Melhores Lanches e Porções de Cambuí - MG</title>
+  <meta name="description"
+    content="Hambúrgueres artesanais suculentos, lanches prensados na chapa, porções na pedra fervendo, petiscos mineiros e cerveja trincando na Praça Matriz de Cambuí - MG. Peça pelo WhatsApp ou UaiRango!">
+  <meta name="keywords"
+    content="Rogério Lanches e Porções, lanchonete Cambuí MG, hambúrguer artesanal Cambuí, porções na chapa, Praça Matriz Cambuí, delivery lanches Cambuí, UaiRango">
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Rogério Lanches &amp; Porções | Sabor Premiado na Praça Matriz">
+  <meta property="og:description"
+    content="Premiado entre os melhores no UaiRango! Lanches artesanais, porções generosas e chopp gelado em Cambuí - MG. Faça seu pedido online!">
+  <meta property="og:image" content="assets/img/marketing/burger-coalho-brioche.jpg">
+
+  <!-- Favicon & Touch Icons em SVG -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Oswald:wght@600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Folha de Estilo Separada -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="topbar" role="region" aria-label="Avisos e localização">
+    <div class="container topbar__inner">
+      <div class="topbar__item">
+        <span class="status-dot" id="storeStatusDot" aria-hidden="true"></span>
+        <span id="storeStatusText">Aberto para pedidos &bull; Delivery e Salão</span>
+      </div>
+      <div class="topbar__item topbar__item--hide-sm">
+        <span>📍 Av. Tiradentes, 11 &bull; Praça Matriz, Cambuí - MG</span>
+      </div>
+      <div class="topbar__item">
+        <a href="https://wa.me/5535999096662?text=Ol%C3%A1%21+Vim+pelo+site+do+Rog%C3%A9rio+Lanches+e+gostaria+de+fazer+um+pedido."
+          target="_blank" rel="noopener noreferrer" class="topbar__link">
+          📲 (35) 9 9909-6662
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="Rogério Lanches e Porções - Início">
+        <img src="logo.svg" alt="Logo Rogério Lanches & Porções" class="brand__logo" width="56" height="56">
+        <div class="brand__text">
+          <span class="brand__title">ROGÉRIO</span>
+          <span class="brand__subtitle">LANCHES &amp; PORÇÕES</span>
+        </div>
+      </a>
+
+      <nav class="nav" id="navMenu" aria-label="Navegação Principal">
+        <a href="#destaques" class="nav__link">Destaques</a>
+        <a href="#cardapio" class="nav__link">Cardápio Online</a>
+        <a href="#sobre" class="nav__link">A Lanchonete</a>
+        <a href="#avaliacoes" class="nav__link">Prêmio &amp; Avaliações</a>
+        <a href="#marketing-kit" class="nav__link">Galeria &amp; Mídia</a>
+        <a href="#localizacao" class="nav__link">Onde Estamos</a>
+      </nav>
+
+      <div class="header__actions">
+        <button type="button" class="cart-trigger" id="openCartBtn" aria-label="Abrir sacola de pedidos">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-trigger__label">Meu Pedido</span>
+          <span class="cart-trigger__badge" id="headerCartCount">0</span>
+        </button>
+
+        <button type="button" class="menu-toggle" id="menuToggleBtn" aria-label="Abrir menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+      <div class="hero__bg-glow" aria-hidden="true"></div>
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <div class="hero__badges">
+            <span class="pill-badge pill-badge--gold">
+              🏆 Destaque UaiRango &bull; Nota +4.4★
+            </span>
+            <span class="pill-badge pill-badge--dark">
+              🔥 Chapa Quente &amp; Cerveja Trincando
+            </span>
+          </div>
+
+          <h1 class="hero__title">
+            O SABOR QUE <span class="text-gold">DOMINA A PRAÇA</span> EM CAMBUÍ.
+          </h1>
+
+          <p class="hero__subtitle">
+            Dos hambúrgueres artesanais no brioche com <strong>queijo coalho grelhado e geleia agridoce</strong> às
+            porções generosas fervendo na pedra de ferro. Venha curtir na Praça Matriz ou peça no conforto de casa!
+          </p>
+
+          <div class="hero__ctas">
+            <a href="#cardapio" class="btn btn--primary btn--lg">
+              <span>🍔 Montar Pedido Agora</span>
+            </a>
+            <a href="https://wa.me/5535999096662?text=Ol%C3%A1%21+Vim+pelo+site+do+Rog%C3%A9rio+Lanches+e+quero+fazer+um+pedido."
+              target="_blank" rel="noopener noreferrer" class="btn btn--outline btn--lg">
+              <span>📲 Pedir pelo WhatsApp</span>
+            </a>
+          </div>
+
+          <div class="hero__metrics">
+            <div class="metric-card">
+              <span class="metric-card__num">170g</span>
+              <span class="metric-card__label">Blend Artesanal Suculento</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__num">+4.4★</span>
+              <span class="metric-card__label">Premiado no UaiRango</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-card__num">Nº 11</span>
+              <span class="metric-card__label">Av. Tiradentes &bull; Praça Matriz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__image-frame">
+            <img src="assets/img/marketing/burger-coalho-brioche.jpg"
+              alt="Burger Especial Rogério Lanches com pão brioche, hambúrguer 170g, queijo coalho grelhado, farofa de bacon e geleia agridoce"
+              class="hero__img" width="680" height="540" fetchpriority="high">
+
+            <div class="float-card float-card--top">
+              <span class="float-card__tag">🔥 LANÇAMENTO CAMPEÃO</span>
+              <strong class="float-card__title">Brioche Coalho &amp; Bacon</strong>
+              <span class="float-card__desc">Blend 170g + Geleia Agridoce</span>
+            </div>
+
+            <div class="float-card float-card--bottom">
+              <img src="logo.svg" alt="" width="38" height="38" class="float-card__icon">
+              <div>
+                <strong class="float-card__title">Entrega Rápida em Cambuí</strong>
+                <span class="float-card__desc">WhatsApp Direto ou App UaiRango</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND HIGHLIGHTS / DIFERENCIAIS -->
+    <section class="features" aria-label="Diferenciais da lanchonete">
+      <div class="container features__grid">
+        <article class="feature-box">
+          <div class="feature-box__icon">🍔</div>
+          <div>
+            <h2 class="feature-box__title">Blends 100% Artesanais</h2>
+            <p class="feature-box__text">Carnes selecionadas grelhadas no ponto certo, pão brioche selado na manteiga e
+              ingredientes frescos todos os dias.</p>
+          </div>
+        </article>
+        <article class="feature-box">
+          <div class="feature-box__icon">🥩</div>
+          <div>
+            <h2 class="feature-box__title">Porções na Pedra Quente</h2>
+            <p class="feature-box__text">Contra-filé e picanha servidos chiando na chapa de ferro fundido com pão de
+              alho, vinagrete e maionese da casa.</p>
+          </div>
+        </article>
+        <article class="feature-box">
+          <div class="feature-box__icon">🍺</div>
+          <div>
+            <h2 class="feature-box__title">Cerveja Trincando &amp; Drinks</h2>
+            <p class="feature-box__text">Heineken, Original, chopp gelado e Caipiroskas preparadas na hora para
+              acompanhar seu happy hour na Praça Matriz.</p>
+          </div>
+        </article>
+        <article class="feature-box">
+          <div class="feature-box__icon">🛵</div>
+          <div>
+            <h2 class="feature-box__title">Delivery Ágil e Premiado</h2>
+            <p class="feature-box__text">Reconhecido entre os mais bem avaliados de Cambuí! Seu lanche chega quentinho e
+              bem embalado na sua porta.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DESTAQUES COMERCIAIS (MARKETING SHOWCASE) -->
+    <section class="section" id="destaques">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">EXPERIÊNCIA GASTRONÔMICA</span>
+          <h2 class="section__title">OS QUERIDINHOS DA <span class="text-gold">NOSSA CHAPA</span></h2>
+          <p class="section__subtitle">
+            Conheça as especialidades que fizeram do Rogério Lanches &amp; Porções parada obrigatória na Praça Matriz de
+            Cambuí.
+          </p>
+        </div>
+
+        <div class="spotlight-grid">
+          <article class="spotlight-card spotlight-card--featured">
+            <div class="spotlight-card__media">
+              <img src="assets/img/marketing/burger-coalho-brioche.jpg" alt="Burger Especial Coalho & Geleia Agridoce"
+                loading="lazy">
+              <span class="spotlight-card__badge">⭐ Assinatura da Casa</span>
+            </div>
+            <div class="spotlight-card__body">
+              <div class="spotlight-card__meta">Hambúrguer Artesanal &bull; 170g</div>
+              <h3 class="spotlight-card__title">Rogério Especial Coalho &amp; Agridoce</h3>
+              <p class="spotlight-card__desc">
+                Pão brioche dourado com gergelim, suculento hambúrguer artesanal de 170g, fatia generosa de queijo
+                coalho chapeado, farofa crocante de bacon defumado e nossa irresistível geleia agridoce.
+              </p>
+              <div class="spotlight-card__footer">
+                <div class="spotlight-card__price">
+                  <span class="price-label">A partir de</span>
+                  <strong class="price-value">R$ 32,90</strong>
+                </div>
+                <button type="button" class="btn btn--primary" data-add-id="esp-coalho">
+                  + Adicionar ao Pedido
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img src="assets/img/marketing/chapa-contrafile-pao-alho.jpg"
+                alt="Chapa de Contra-Filé com Pão de Alho" loading="lazy">
+              <span class="spotlight-card__badge spotlight-card__badge--fire">🔥 Serve 2 a 3 Pessoas</span>
+            </div>
+            <div class="spotlight-card__body">
+              <div class="spotlight-card__meta">Porção na Pedra Santana</div>
+              <h3 class="spotlight-card__title">Contra-Filé Especial na Pedra com Pão de Alho</h3>
+              <p class="spotlight-card__desc">
+                Tiras suculentas grelhadas na chapa de ferro fundido com pimenta biquinho, acompanhadas de pão de alho
+                tostado, vinagrete fresco e maionese temperada.
+              </p>
+              <div class="spotlight-card__footer">
+                <div class="spotlight-card__price">
+                  <span class="price-label">Porção Completa</span>
+                  <strong class="price-value">R$ 68,90</strong>
+                </div>
+                <button type="button" class="btn btn--primary" data-add-id="porcao-chapa-contra">
+                  + Adicionar
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="spotlight-card">
+            <div class="spotlight-card__media">
+              <img src="assets/img/marketing/batata-frita-bacon-queijo.jpg"
+                alt="Porção de Batata Frita Suprema com Queijo e Bacon" loading="lazy">
+              <span class="spotlight-card__badge">🍟 Campeã de Vendas</span>
+            </div>
+            <div class="spotlight-card__body">
+              <div class="spotlight-card__meta">Porção Clássica Turbinada</div>
+              <h3 class="spotlight-card__title">Fritas Suprema com Queijo Derretido &amp; Bacon</h3>
+              <p class="spotlight-card__desc">
+                Montanha de batatas fritas super crocantes por fora e macias por dentro, cobertas com camada generosa de
+                muçarela/cheddar derretido, cubos de bacon e cebolinha.
+              </p>
+              <div class="spotlight-card__footer">
+                <div class="spotlight-card__price">
+                  <span class="price-label">Porção Generosa</span>
+                  <strong class="price-value">R$ 36,90</strong>
+                </div>
+                <button type="button" class="btn btn--primary" data-add-id="porcao-fritas-suprema">
+                  + Adicionar
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDÁPIO INTERATIVO COMPLETO (100% HTML PURO) -->
+    <section class="section section--dark-alt" id="cardapio">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">FAÇA SEU PEDIDO DIRETO PELO SITE</span>
+          <h2 class="section__title">CARDÁPIO <span class="text-gold">ROGÉRIO LANCHES</span></h2>
+          <p class="section__subtitle">
+            Escolha seus lanches, porções e bebidas abaixo, monte sua sacola e envie o pedido pronto direto para o nosso
+            WhatsApp sem complicação!
+          </p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="menu-tabs" role="tablist" aria-label="Categorias do Cardápio">
+          <button type="button" class="menu-tab active" data-category="todos" role="tab" aria-selected="true">
+            ✨ Todos
+          </button>
+          <button type="button" class="menu-tab" data-category="artesanais" role="tab" aria-selected="false">
+            🍔 Artesanais &amp; Especiais
+          </button>
+          <button type="button" class="menu-tab" data-category="tradicionais" role="tab" aria-selected="false">
+            🥪 Tradicionais da Chapa
+          </button>
+          <button type="button" class="menu-tab" data-category="porcoes" role="tab" aria-selected="false">
+            🥩 Porções &amp; Fritas
+          </button>
+          <button type="button" class="menu-tab" data-category="petiscos" role="tab" aria-selected="false">
+            🧆 Petiscos na Cumbuca
+          </button>
+          <button type="button" class="menu-tab" data-category="kids" role="tab" aria-selected="false">
+            🎈 Espaço Kids
+          </button>
+          <button type="button" class="menu-tab" data-category="bebidas" role="tab" aria-selected="false">
+            🍺 Cervejas &amp; Drinks
+          </button>
+        </div>
+
+        <!-- Grid de Produtos em HTML Estruturado -->
+        <div class="menu-grid" id="menuGrid" aria-live="polite">
+          <!-- Item 1 -->
+          <article class="menu-item" data-item-category="artesanais" data-id="esp-coalho"
+            data-name="Burger Brioche Coalho &amp; Geleia Agridoce" data-price="32.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/burger-coalho-brioche.jpg"
+                alt="Burger Brioche Coalho e Geleia Agridoce" loading="lazy">
+              <span class="menu-item__tag">🔥 Lançamento Campeão</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Burger Brioche Coalho &amp; Geleia Agridoce</h3>
+              <p class="menu-item__desc">Pão brioche selado na manteiga, hambúrguer artesanal 170g, queijo coalho
+                chapeado, farofa crocante de bacon e geleia agridoce da casa.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 32,90</span>
+                <button type="button" class="menu-item__add" data-add-id="esp-coalho">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="menu-item" data-item-category="artesanais" data-id="art-duplo-onion"
+            data-name="Rogério Duplo Cheddar, Bacon &amp; Onion" data-price="36.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/burger-duplo-studio.jpg"
+                alt="Rogério Duplo Cheddar, Bacon e Onion Rings" loading="lazy">
+              <span class="menu-item__tag">🍔 Duplo 340g</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Rogério Duplo Cheddar, Bacon &amp; Onion</h3>
+              <p class="menu-item__desc">Dois hambúrgueres artesanais suculentos, cheddar cremoso derretido, cubos de
+                bacon defumado, anéis de cebola crocantes e molho barbecue.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 36,90</span>
+                <button type="button" class="menu-item__add" data-add-id="art-duplo-onion">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="menu-item" data-item-category="artesanais" data-id="art-classico-casa"
+            data-name="Brioche Salad Bacon Especial" data-price="29.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/lanche-tradicional-studio.jpg" alt="Brioche Salad Bacon Especial"
+                loading="lazy">
+              <span class="menu-item__tag">⭐ Favorito</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Brioche Salad Bacon Especial</h3>
+              <p class="menu-item__desc">Pão brioche com gergelim, blend bovino 170g, queijo prato derretido, tiras de
+                bacon, cebola roxa fresca, alface americana, tomate e maionese verde.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 29,90</span>
+                <button type="button" class="menu-item__add" data-add-id="art-classico-casa">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 4 -->
+          <article class="menu-item" data-item-category="tradicionais" data-id="trad-xtudo"
+            data-name="X-Tudo Monstro do Rogério" data-price="28.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/lanche-tradicional-studio.jpg" alt="X-Tudo Monstro do Rogério"
+                loading="lazy">
+              <span class="menu-item__tag">🥪 Farto na Chapa</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">X-Tudo Monstro do Rogério</h3>
+              <p class="menu-item__desc">Pão de hambúrguer tradicional tostado, hambúrguer duplo, presunto, muçarela,
+                bacon crocante, ovo, milho, batata palha, alface, tomate e maionese.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 28,90</span>
+                <button type="button" class="menu-item__add" data-add-id="trad-xtudo">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 5 -->
+          <article class="menu-item" data-item-category="tradicionais" data-id="trad-xbacon"
+            data-name="X-Bacon Duplo Prensado na Chapa" data-price="25.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/lanche-brioche-coalho.jpg" alt="X-Bacon Duplo Prensado na Chapa" loading="lazy">
+              <span class="menu-item__tag">🥓 Clássico</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">X-Bacon Duplo Prensado na Chapa</h3>
+              <p class="menu-item__desc">Pão macio selado na chapa, hambúrguer suculento, muito queijo muçarela
+                derretido, bacon crocante em cubos, salada fresca e maionese temperada.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 25,90</span>
+                <button type="button" class="menu-item__add" data-add-id="trad-xbacon">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 6 -->
+          <article class="menu-item" data-item-category="porcoes" data-id="porcao-chapa-contra"
+            data-name="Contra-Filé na Pedra c/ Pão de Alho" data-price="68.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/chapa-contrafile-pao-alho.jpg"
+                alt="Contra-Filé na Pedra com Pão de Alho" loading="lazy">
+              <span class="menu-item__tag">🥩 Serve 2 a 3 Pessoas</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Contra-Filé na Pedra c/ Pão de Alho</h3>
+              <p class="menu-item__desc">Tiras suculentas de contra-filé grelhadas na chapa de ferro fundido Santana com
+                pimenta biquinho, pão de alho dourado, vinagrete e maionese da casa.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 68,90</span>
+                <button type="button" class="menu-item__add" data-add-id="porcao-chapa-contra">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 7 -->
+          <article class="menu-item" data-item-category="porcoes" data-id="porcao-fritas-suprema"
+            data-name="Batata Frita Suprema c/ Queijo e Bacon" data-price="36.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/batata-frita-bacon-queijo.jpg"
+                alt="Batata Frita Suprema com Queijo e Bacon" loading="lazy">
+              <span class="menu-item__tag">🍟 Mais Pedida</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Batata Frita Suprema c/ Queijo e Bacon</h3>
+              <p class="menu-item__desc">Porção caprichada de batata frita super crocante coberta com muita muçarela e
+                cheddar derretido, bacon defumado em cubos e cebolinha fresca.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 36,90</span>
+                <button type="button" class="menu-item__add" data-add-id="porcao-fritas-suprema">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 8 -->
+          <article class="menu-item" data-item-category="petiscos" data-id="petisco-bolinho-cumbuca"
+            data-name="Bolinhos de Queijo Crocantes na Cumbuca" data-price="29.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/petiscos-cumbuca-studio.jpg"
+                alt="Bolinhos de Queijo Crocantes na Cumbuca" loading="lazy">
+              <span class="menu-item__tag">🧆 Na Cumbuca</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Bolinhos de Queijo Crocantes na Cumbuca</h3>
+              <p class="menu-item__desc">Porção de bolinhos artesanais super recheados de queijo servidos quentinhos na
+                tradicional cumbuca de barro com pimenta biquinho e molho.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 29,90</span>
+                <button type="button" class="menu-item__add" data-add-id="petisco-bolinho-cumbuca">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 9 -->
+          <article class="menu-item" data-item-category="petiscos" data-id="petisco-onion-rings"
+            data-name="Anéis de Cebola Empanados c/ Molho da Casa" data-price="27.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/petiscos-cumbuca-studio.jpg"
+                alt="Anéis de Cebola Empanados com Molho da Casa" loading="lazy">
+              <span class="menu-item__tag">🧅 Super Crocante</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Anéis de Cebola Empanados c/ Molho da Casa</h3>
+              <p class="menu-item__desc">Porção de onion rings douradas e crocantes servidas na cumbuca com maionese
+                temperada especial do Rogério.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 27,90</span>
+                <button type="button" class="menu-item__add" data-add-id="petisco-onion-rings">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 10 -->
+          <article class="menu-item" data-item-category="kids" data-id="combo-kids"
+            data-name="Combo Hora do Lanche (Rogério Kids)" data-price="26.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/marketing/burger-coalho-brioche.jpg" alt="Combo Hora do Lanche Rogério Kids"
+                loading="lazy">
+              <span class="menu-item__tag">🎈 Rogério Kids</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Combo Hora do Lanche (Rogério Kids)</h3>
+              <p class="menu-item__desc">Hambúrguer macio com queijo derretido no pão brioche + porção individual de
+                batata frita crocante + bebida infantil. Sucesso com a criançada!</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 26,90</span>
+                <button type="button" class="menu-item__add" data-add-id="combo-kids">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 11 -->
+          <article class="menu-item" data-item-category="bebidas" data-id="bebida-heineken"
+            data-name="Cerveja Heineken 600ml" data-price="16.90">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/cerveja-heineken-rogerio.jpg" alt="Cerveja Heineken 600ml" loading="lazy">
+              <span class="menu-item__tag">🍺 Trincando</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Cerveja Heineken 600ml (Consumo / Delivery)</h3>
+              <p class="menu-item__desc">Servida estupidamente gelada na famosa camisinha térmica amarela do Rogério
+                Lanches na Praça Matriz.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 16,90</span>
+                <button type="button" class="menu-item__add" data-add-id="bebida-heineken">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 12 -->
+          <article class="menu-item" data-item-category="bebidas" data-id="bebida-caipiroska"
+            data-name="Caipiroska Especial de Limão (500ml)" data-price="22.00">
+            <div class="menu-item__img-wrap">
+              <img src="assets/img/caipiroska-petiscos-real.jpg" alt="Caipiroska Especial de Limão" loading="lazy">
+              <span class="menu-item__tag">🍋 Drink da Casa</span>
+            </div>
+            <div class="menu-item__content">
+              <h3 class="menu-item__title">Caipiroska Especial de Limão (500ml)</h3>
+              <p class="menu-item__desc">Preparada na hora com limão taiti selecionado, vodka premium, gelo em cubos e
+                toque refrescante.</p>
+              <div class="menu-item__bottom">
+                <span class="menu-item__price">R$ 22,00</span>
+                <button type="button" class="menu-item__add" data-add-id="bebida-caipiroska">+ Adicionar</button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- UaiRango Alternative Banner -->
+        <div class="uairango-strip">
+          <div class="uairango-strip__left">
+            <span class="uairango-strip__badge">APP PARCEIRO OFICIAL</span>
+            <h3>Prefere pedir pelo aplicativo <strong>UaiRango</strong>?</h3>
+            <p>Somos um dos estabelecimentos mais bem avaliados de Cambuí no UaiRango (Nota acima de 4.4★). Peça pelo
+              WhatsApp sem taxas extras ou direto pelo app!</p>
+          </div>
+          <div class="uairango-strip__actions">
+            <a href="https://wa.me/5535999096662?text=Ol%C3%A1%21+Quero+fazer+um+pedido+direto+pelo+WhatsApp."
+              target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+              📲 Pedir no WhatsApp Direto
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE A LANCHONETE & AMBIENTE NA PRAÇA MATRIZ -->
+    <section class="section" id="sobre">
+      <div class="container about-grid">
+        <div class="about-media">
+          <div class="about-collage">
+            <figure class="about-collage__main">
+              <img src="assets/img/cerveja-heineken-rogerio.jpg"
+                alt="Cerveja trincando no suporte térmico amarelo oficial do Rogério Lanches e Porções" loading="lazy">
+              <figcaption>Ambiente climatizado e mesas na Praça Matriz</figcaption>
+            </figure>
+            <figure class="about-collage__secondary">
+              <img src="assets/img/fachada-noturna.jpg"
+                alt="Fachada noturna do Rogério Lanches e Porções na Av. Tiradentes, 11 em Cambuí" loading="lazy">
+            </figure>
+            <div class="about-exp-badge">
+              <strong>100%</strong>
+              <span>Sabor &amp; Tradição em Cambuí - MG</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <span class="section__eyebrow">NOSSA HISTÓRIA &amp; AMBIENTE</span>
+          <h2 class="section__title">PONTO DE ENCONTRO DA FAMÍLIA E DOS AMIGOS EM <span class="text-gold">CAMBUÍ</span>
+          </h2>
+          <p class="about-text">
+            Localizado no coração de Cambuí, na <strong>Av. Tiradentes, nº 11 (Praça Matriz)</strong>, o <strong>Rogério
+              Lanches &amp; Porções</strong> nasceu com uma missão simples: entregar lanches fartos, carnes selecionadas
+            e porções de verdade com aquele atendimento mineiro acolhedor.
+          </p>
+          <p class="about-text">
+            Seja para comemorar o <em>Sextou na Praça</em> com uma Heineken estupidamente gelada e uma chapa de
+            contra-filé com pão de alho, trazer as crianças para saborear o <strong>Combo Rogério Kids</strong>, ou
+            pedir aquele burger artesanal caprichado em casa, aqui cada detalhe é preparado no capricho!
+          </p>
+
+          <ul class="about-highlights">
+            <li>
+              <span class="check-icon">✔</span>
+              <div>
+                <strong>Localização Privilegiada:</strong> Bem na Praça Matriz (Av. Tiradentes, 11), com ambiente
+                interno moderno e mesas ao ar livre.
+              </div>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <div>
+                <strong>Apoio à Cultura e Eventos de Cambuí:</strong> Patrocinador oficial da Festa de Nossa Senhora do
+                Carmo, Sextou na Praça e Mega Live Cambuí.
+              </div>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <div>
+                <strong>Cardápio Completo para Todos os Gostos:</strong> Do lanche tradicional prensado ao brioche
+                gourmet com queijo coalho, petiscos na cumbuca de barro e drinks.
+              </div>
+            </li>
+          </ul>
+
+          <div class="about-actions">
+            <a href="#localizacao" class="btn btn--primary">📍 Ver Mapa e Horários</a>
+            <a href="https://instagram.com/rogerio.lanchesmg" target="_blank" rel="noopener noreferrer"
+              class="btn btn--outline">
+              📸 Siga @rogerio.lanchesmg
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECONHECIMENTO UAIRANGO & AVALIAÇÕES -->
+    <section class="section section--dark-alt" id="avaliacoes">
+      <div class="container">
+        <div class="award-banner">
+          <div class="award-banner__img-wrap">
+            <img src="assets/img/premio-uairango-2024.jpg"
+              alt="Certificado Oficial UaiRango - Rogério Lanches e Porções reconhecido entre os mais bem avaliados"
+              loading="lazy">
+          </div>
+          <div class="award-banner__content">
+            <span class="pill-badge pill-badge--gold">🏅 RECONHECIMENTO OFICIAL DE QUALIDADE</span>
+            <h2 class="section__title">ELEITO ENTRE OS <span class="text-gold">MAIS BEM AVALIADOS</span> DE CAMBUÍ!</h2>
+            <p>
+              O <strong>Rogério Lanches &amp; Porções</strong> recebeu o selo oficial de excelência do aplicativo
+              <strong>UaiRango</strong>, certificando nossa média geral acima de <strong>4.4 estrelas</strong> graças ao
+              carinho, pontualidade e qualidade aprovada pelos nossos clientes.
+            </p>
+            <div class="testimonials-grid">
+              <blockquote class="review-card">
+                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+                <p>"O burger de pão brioche com queijo coalho, farofa de bacon e geleia agridoce é surreal de bom!
+                  Chegou super rápido e quentinho."</p>
+                <footer>— <strong>Lucas M.</strong> &bull; Cliente Verificado</footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+                <p>"Melhor porção na pedra da Praça Matriz! O contra-filé com pão de alho e aquela cerveja gelada na
+                  camisinha amarela não têm erro."</p>
+                <footer>— <strong>Fernanda S.</strong> &bull; Cambuí - MG</footer>
+              </blockquote>
+              <blockquote class="review-card">
+                <div class="review-card__stars" aria-label="5 de 5 estrelas">★★★★★</div>
+                <p>"Atendimento nota 10, ambiente familiar na praça e meu filho adora o combo Rogério Kids. Recomendamos
+                  de olhos fechados!"</p>
+                <footer>— <strong>Ricardo &amp; Família</strong> &bull; Cliente Fiel</footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA GASTRONÔMICA & KIT DE MARKETING PARA O INSTAGRAM -->
+    <section class="section" id="marketing-kit">
+      <div class="container">
+        <div class="section__header">
+          <span class="section__eyebrow">CONTEÚDO VISUAL DE ALTA CONVERSÃO</span>
+          <h2 class="section__title">GALERIA &amp; <span class="text-gold">ARTES DE MARKETING</span></h2>
+          <p class="section__subtitle">
+            Imagens gastronômicas produzidas e tratadas em padrão comercial + criativos prontos para turbinar o
+            Instagram <strong>@rogerio.lanchesmg</strong> e o WhatsApp Status!
+          </p>
+        </div>
+
+        <div class="gallery-switch" role="tablist" aria-label="Filtro da Galeria">
+          <button type="button" class="gallery-switch__btn active" data-gallery-filter="all">
+            🔥 Todas as Imagens
+          </button>
+          <button type="button" class="gallery-switch__btn" data-gallery-filter="studio">
+            📸 Fotografia Comercial (Sem Texto)
+          </button>
+          <button type="button" class="gallery-switch__btn" data-gallery-filter="social">
+            📲 Posts Prontos p/ Instagram &amp; Status
+          </button>
+        </div>
+
+        <div class="marketing-gallery" id="marketingGallery">
+          <figure class="m-card" data-type="social">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/post-instagram-burger.jpg"
+                alt="Arte para Instagram: Burger Coalho e Geleia Agridoce" loading="lazy">
+              <span class="m-card__tag">Arte Pronta 4:5 (Feed/Status)</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Post: Burger Coalho &amp; Geleia</strong>
+                <span>1080x1350px &bull; Pronto para postar</span>
+              </div>
+              <a href="assets/img/marketing/post-instagram-burger.jpg" download="rogerio-post-burger-coalho.jpg"
+                class="btn btn--sm btn--primary">
+                ⬇ Baixar Arte
+              </a>
+            </figcaption>
+          </figure>
+
+          <figure class="m-card" data-type="social">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/post-instagram-chapa.jpg"
+                alt="Arte para Instagram: Contra-Filé na Chapa com Pão de Alho" loading="lazy">
+              <span class="m-card__tag">Arte Pronta 4:5 (Feed/Status)</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Post: Contra-Filé na Pedra</strong>
+                <span>1080x1350px &bull; Pronto para postar</span>
+              </div>
+              <a href="assets/img/marketing/post-instagram-chapa.jpg" download="rogerio-post-chapa-contrafile.jpg"
+                class="btn btn--sm btn--primary">
+                ⬇ Baixar Arte
+              </a>
+            </figcaption>
+          </figure>
+
+          <figure class="m-card" data-type="social">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/post-instagram-fritas.jpg"
+                alt="Arte para Instagram: Fritas Suprema Queijo e Bacon" loading="lazy">
+              <span class="m-card__tag">Arte Pronta 4:5 (Feed/Status)</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Post: Fritas Suprema Bacon</strong>
+                <span>1080x1350px &bull; Pronto para postar</span>
+              </div>
+              <a href="assets/img/marketing/post-instagram-fritas.jpg" download="rogerio-post-fritas-suprema.jpg"
+                class="btn btn--sm btn--primary">
+                ⬇ Baixar Arte
+              </a>
+            </figcaption>
+          </figure>
+
+          <figure class="m-card" data-type="studio">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/burger-coalho-brioche.jpg" alt="Fotografia Comercial Burger Coalho Brioche"
+                loading="lazy">
+              <span class="m-card__tag m-card__tag--dark">Foto Comercial Limpa</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Foto: Burger Brioche &amp; Coalho</strong>
+                <span>Alta Resolução &bull; Cardápio / UaiRango</span>
+              </div>
+              <a href="assets/img/marketing/burger-coalho-brioche.jpg" download="rogerio-foto-burger-coalho.jpg"
+                class="btn btn--sm btn--outline">
+                ⬇ Baixar Foto
+              </a>
+            </figcaption>
+          </figure>
+
+          <figure class="m-card" data-type="studio">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/chapa-contrafile-pao-alho.jpg"
+                alt="Fotografia Comercial Chapa de Contra-Filé" loading="lazy">
+              <span class="m-card__tag m-card__tag--dark">Foto Comercial Limpa</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Foto: Chapa Quente &amp; Pão de Alho</strong>
+                <span>Alta Resolução &bull; Cardápio / UaiRango</span>
+              </div>
+              <a href="assets/img/marketing/chapa-contrafile-pao-alho.jpg" download="rogerio-foto-chapa-quente.jpg"
+                class="btn btn--sm btn--outline">
+                ⬇ Baixar Foto
+              </a>
+            </figcaption>
+          </figure>
+
+          <figure class="m-card" data-type="studio">
+            <div class="m-card__img-box">
+              <img src="assets/img/marketing/petiscos-cumbuca-studio.jpg"
+                alt="Fotografia Petiscos na Cumbuca Restaurada" loading="lazy">
+              <span class="m-card__tag m-card__tag--dark">Foto Tratada (Sem Texto Antigo)</span>
+            </div>
+            <figcaption class="m-card__bar">
+              <div>
+                <strong>Foto: Bolinhos &amp; Onion Rings na Cumbuca</strong>
+                <span>Fundo limpo e cor de estúdio</span>
+              </div>
+              <a href="assets/img/marketing/petiscos-cumbuca-studio.jpg" download="rogerio-foto-petiscos-cumbuca.jpg"
+                class="btn btn--sm btn--outline">
+                ⬇ Baixar Foto
+              </a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section section--dark-alt" id="faq">
+      <div class="container faq-container">
+        <div class="section__header">
+          <span class="section__eyebrow">TIRE SUAS DÚVIDAS</span>
+          <h2 class="section__title">PERGUNTAS <span class="text-gold">FREQUENTES</span></h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary class="faq-item__question">Como faço para pedir no delivery?</summary>
+            <div class="faq-item__answer">
+              Você pode montar seu pedido diretamente aqui pelo site clicando em <strong>"+ Adicionar"</strong> nos
+              itens do cardápio e enviar tudo formatado para o nosso WhatsApp <strong>(35) 9 9909-6662</strong>, ou
+              pedir pelo aplicativo <strong>UaiRango</strong>!
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Onde fica localizada a lanchonete?</summary>
+            <div class="faq-item__answer">
+              Estamos localizados no coração de Cambuí - MG: <strong>Avenida Tiradentes, nº 11, na Praça Matriz
+                (Centro)</strong>. Contamos com salão interno e mesas na calçada/praça.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Quais formas de pagamento vocês aceitam?</summary>
+            <div class="faq-item__answer">
+              Aceitamos <strong>PIX, Cartões de Crédito e Débito</strong> (levamos a maquininha até você na entrega) e
+              Dinheiro.
+            </div>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-item__question">Vocês têm opções para crianças (Linha Kids)?</summary>
+            <div class="faq-item__answer">
+              Sim! Temos o <strong>Combo Rogério Kids</strong>, pensado especialmente para os pequenos com lanche macio,
+              batata frita crocante e bebida na medida certa.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO E CONTATO -->
+    <section class="section" id="localizacao">
+      <div class="container">
+        <div class="location-card">
+          <div class="location-card__info">
+            <span class="section__eyebrow">VENHA NOS VISITAR OU PEÇA EM CASA</span>
+            <h2 class="section__title">ONDE <span class="text-gold">ESTAMOS</span></h2>
+            <p class="location-card__lead">
+              Chame a galera e venha curtir o melhor lanche e a cerveja mais gelada da Praça Matriz de Cambuí!
+            </p>
+
+            <div class="contact-blocks">
+              <div class="contact-block">
+                <span class="contact-block__icon">📍</span>
+                <div>
+                  <strong>Endereço</strong>
+                  <p>Av. Tiradentes, 11 &bull; Praça Matriz<br>Centro, Cambuí - MG, CEP 37600-000</p>
+                </div>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block__icon">🕒</span>
+                <div>
+                  <strong>Horário de Funcionamento</strong>
+                  <p>Terça a Domingo: 18h00 às 23h45<br>Sextas, Sábados e Eventos na Praça: horário estendido!</p>
+                </div>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block__icon">☎️</span>
+                <div>
+                  <strong>WhatsApp &amp; Delivery</strong>
+                  <p><a href="https://wa.me/5535999096662" target="_blank" rel="noopener noreferrer">(35) 9
+                      9909-6662</a> &bull; Também no App UaiRango</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="location-card__buttons">
+              <a href="https://wa.me/5535999096662?text=Ol%C3%A1%21+Vim+pelo+site+do+Rog%C3%A9rio+Lanches+e+gostaria+de+fazer+um+pedido."
+                target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                📲 Chamar no WhatsApp
+              </a>
+              <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Tiradentes+11+Praca+Matriz+Cambui+MG"
+                target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+                🗺️ Abrir no Google Maps / Waze
+              </a>
+            </div>
+          </div>
+
+          <div class="location-card__map">
+            <iframe class="map-iframe"
+              title="Mapa de Localização Rogério Lanches e Porções - Av. Tiradentes, 11, Cambuí - MG"
+              src="https://www.google.com/maps?q=Avenida+Tiradentes,+11,+Cambui+-+MG&output=embed" allowfullscreen=""
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="brand">
+          <img src="logo.svg" alt="Logo Rogério Lanches e Porções" width="60" height="60">
+          <div class="brand__text">
+            <span class="brand__title">ROGÉRIO</span>
+            <span class="brand__subtitle">LANCHES &amp; PORÇÕES</span>
+          </div>
+        </a>
+        <p class="footer__desc">
+          Variedades em lanches artesanais, tradicionais na chapa, porções na pedra, petiscos mineiros e bebidas geladas
+          na Praça Matriz de Cambuí - MG.
+        </p>
+        <div class="footer__socials">
+          <a href="https://instagram.com/rogerio.lanchesmg" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram @rogerio.lanchesmg" class="social-pill">
+            📸 @rogerio.lanchesmg
+          </a>
+          <a href="https://wa.me/5535999096662" target="_blank" rel="noopener noreferrer"
+            aria-label="WhatsApp (35) 9 9909-6662" class="social-pill">
+            💬 (35) 9 9909-6662
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#destaques">Destaques da Casa</a></li>
+          <li><a href="#cardapio">Cardápio Online</a></li>
+          <li><a href="#sobre">Sobre a Lanchonete</a></li>
+          <li><a href="#marketing-kit">Galeria &amp; Kit de Mídia</a></li>
+          <li><a href="#localizacao">Onde Estamos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Mais Pedidos</h4>
+        <ul>
+          <li><a href="#cardapio" data-filter-link="artesanais">Burger Brioche Queijo Coalho</a></li>
+          <li><a href="#cardapio" data-filter-link="porcoes">Contra-Filé na Pedra c/ Pão de Alho</a></li>
+          <li><a href="#cardapio" data-filter-link="porcoes">Batata Frita Suprema c/ Bacon</a></li>
+          <li><a href="#cardapio" data-filter-link="petiscos">Bolinhos de Queijo na Cumbuca</a></li>
+          <li><a href="#cardapio" data-filter-link="kids">Combo Rogério Kids</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Baixe a Logo Oficial (SVG)</h4>
+        <p class="footer__small">Arquivo vetorial em alta definição para uso em cardápios, uniformes e redes sociais:
+        </p>
+        <div class="footer__downloads">
+          <a href="logo.svg" download="logo-rogerio-lanches.svg" class="btn btn--sm btn--outline">
+            ⬇ Baixar Logo (.SVG)
+          </a>
+          <a href="favicon.svg" download="favicon-rogerio-lanches.svg" class="btn btn--sm btn--outline">
+            ⬇ Baixar Ícone (.SVG)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>&copy; <span id="currentYear">2026</span> <strong>Rogério Lanches &amp; Porções</strong> &bull; Av. Tiradentes,
+        11 - Praça Matriz, Cambuí - MG.</p>
+      <p>Feito sob medida para conversão mobile (Android &amp; iOS) e Desktop.</p>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CART BAR -->
+  <div class="mobile-cart-bar" id="mobileCartBar" aria-live="polite">
+    <div class="mobile-cart-bar__info">
+      <span class="mobile-cart-bar__count"><strong id="mobileCartCount">0</strong> item(ns) na sacola</span>
+      <strong class="mobile-cart-bar__total" id="mobileCartTotal">R$ 0,00</strong>
+    </div>
+    <button type="button" class="btn btn--primary mobile-cart-bar__btn" id="mobileOpenCartBtn">
+      Ver Pedido &rarr;
+    </button>
+  </div>
+
+  <!-- FLOATING WHATSAPP QUICK BUTTON -->
+  <a href="https://wa.me/5535999096662?text=Ol%C3%A1%21+Vim+pelo+site+do+Rog%C3%A9rio+Lanches+e+quero+fazer+um+pedido."
+    target="_blank" rel="noopener noreferrer" class="whatsapp-float"
+    aria-label="Falar no WhatsApp (35) 9 9909-6662">
+    <svg viewBox="0 0 32 32" width="28" height="28" fill="currentColor" aria-hidden="true">
+      <path
+        d="M16.004 3.2c-7.072 0-12.8 5.728-12.8 12.8 0 2.256.592 4.464 1.712 6.416L3.2 28.8l6.56-1.712c1.888 1.024 4.016 1.568 6.24 1.568h.004c7.072 0 12.8-5.728 12.8-12.8 0-3.424-1.328-6.64-3.744-9.056C22.644 4.528 19.428 3.2 16.004 3.2zm0 23.36c-1.92 0-3.808-.512-5.456-1.488l-.384-.224-4.048 1.056 1.072-3.952-.256-.4c-1.072-1.712-1.648-3.68-1.648-5.712 0-5.888 4.784-10.672 10.676-10.672 2.848 0 5.52 1.104 7.536 3.12 2.016 2.016 3.12 4.688 3.12 7.552 0 5.888-4.784 10.72-10.612 10.72zm5.856-7.984c-.32-.16-1.888-.928-2.176-1.04-.288-.112-.496-.16-.704.16-.208.32-.816 1.04-.992 1.248-.176.208-.368.24-.688.08-.32-.16-1.344-.496-2.56-1.584-.944-.848-1.584-1.888-1.776-2.208-.192-.32-.016-.496.144-.656.144-.144.32-.368.48-.56.16-.192.208-.32.32-.528.112-.208.048-.4-.032-.56-.08-.16-.704-1.712-.96-2.336-.256-.608-.512-.528-.704-.544h-.608c-.208 0-.56.08-.848.4-.288.32-1.12 1.088-1.12 2.656s1.152 3.088 1.312 3.296c.16.208 2.256 3.44 5.472 4.832.768.336 1.36.528 1.824.672.768.24 1.472.208 2.032.128.624-.096 1.888-.768 2.16-1.52.272-.752.272-1.392.192-1.52-.08-.128-.288-.208-.608-.368z" />
+    </svg>
+  </a>
+
+  <!-- DRAWER DO CARRINHO / FINALIZAR PEDIDO WHATSAPP -->
+  <div class="cart-modal" id="cartModal" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="cartModalTitle">
+    <div class="cart-modal__backdrop" id="closeCartBackdrop"></div>
+    <aside class="cart-modal__panel">
+      <header class="cart-modal__header">
+        <div>
+          <h2 id="cartModalTitle">🍔 Seu Pedido</h2>
+          <p>Envie direto para o WhatsApp do Rogério Lanches</p>
+        </div>
+        <button type="button" class="cart-modal__close" id="closeCartBtn" aria-label="Fechar sacola">&times;</button>
+      </header>
+
+      <div class="cart-modal__body">
+        <div class="cart-empty" id="cartEmptyState">
+          <p>Sua sacola ainda está vazia 🍔</p>
+          <small>Adicione seus lanches e porções favoritos no cardápio!</small>
+        </div>
+
+        <div id="cartItemsContainer" class="cart-items"></div>
+
+        <!-- Template HTML Nativo para Linha do Carrinho (Sem HTML dentro do JS) -->
+        <template id="cartRowTemplate">
+          <div class="cart-row">
+            <div class="cart-row__info">
+              <strong class="cart-row__title"></strong>
+              <span class="cart-row__subtotal"></span>
+            </div>
+            <div class="cart-row__controls">
+              <button type="button" class="qty-btn" data-qty-delta="-1" aria-label="Diminuir quantidade">−</button>
+              <span class="cart-row__qty"></span>
+              <button type="button" class="qty-btn" data-qty-delta="1" aria-label="Aumentar quantidade">+</button>
+            </div>
+          </div>
+        </template>
+
+        <form id="checkoutForm" class="checkout-form">
+          <div class="form-group">
+            <label for="customerName">Seu Nome *</label>
+            <input type="text" id="customerName" name="customerName" placeholder="Ex: João Silva" required
+              autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label>Como deseja receber? *</label>
+            <div class="delivery-selector">
+              <label class="radio-card">
+                <input type="radio" name="orderType" value="Delivery (Entrega)" checked>
+                <span>🛵 Delivery</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="orderType" value="Retirada no Balcão">
+                <span>🥡 Retirar</span>
+              </label>
+              <label class="radio-card">
+                <input type="radio" name="orderType" value="Consumo no Local (Praça Matriz)">
+                <span>🍽️ Na Mesa</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group" id="addressGroup">
+            <label for="customerAddress">Endereço de Entrega (Rua, Nº, Bairro) *</label>
+            <input type="text" id="customerAddress" name="customerAddress"
+              placeholder="Ex: Rua Governador Valadares, 150 - Centro" autocomplete="street-address">
+          </div>
+
+          <div class="form-group">
+            <label for="paymentMethod">Forma de Pagamento</label>
+            <select id="paymentMethod" name="paymentMethod">
+              <option value="PIX">💠 PIX</option>
+              <option value="Cartão de Crédito">💳 Cartão de Crédito</option>
+              <option value="Cartão de Débito">💳 Cartão de Débito</option>
+              <option value="Dinheiro">💵 Dinheiro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="orderNotes">Observações do Pedido (Opcional)</label>
+            <textarea id="orderNotes" name="orderNotes" rows="2"
+              placeholder="Ex: Sem cebola, ponto da carne bem passado, troco para R$ 100..."></textarea>
+          </div>
+        </form>
+      </div>
+
+      <footer class="cart-modal__footer">
+        <div class="cart-summary-row">
+          <span>Total Estimado dos Itens:</span>
+          <strong id="cartTotalValue">R$ 0,00</strong>
+        </div>
+        <button type="button" class="btn btn--primary btn--block btn--lg" id="sendWhatsAppOrderBtn">
+          📲 Enviar Pedido no WhatsApp
+        </button>
+      </footer>
+    </aside>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toastNotification" role="status" aria-live="polite"></div>
+
+  <!-- Script Principal Separado -->
+  <script src="app.js"></script>
+</body>
+
+</html>
