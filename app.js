@@ -1,7 +1,8 @@
 /**
  * Rogério Lanches & Porções — app.js
  * Centraliza toda a lógica interativa da Landing Page (100% separada do HTML e CSS):
- * - Filtro de categorias do cardápio direto nos elementos do DOM
+ * - Busca em tempo real e filtro de categorias do cardápio oficial (UaiRango)
+ * - Suporte a variações de tamanho (Mini / Lanche, Meia / Inteira, Lata / 600ml / 2L)
  * - Sacola de pedidos com persistência em localStorage usando <template> nativo
  * - Envio de pedido formatado direto para o WhatsApp (5535999096662)
  * - Filtro da Galeria & Kit de Marketing
@@ -12,15 +13,21 @@
   'use strict';
 
   const WHATSAPP_NUMBER = '5535999096662';
-  const STORAGE_KEY = 'rogerio_lanches_cart';
+  const STORAGE_KEY = 'rogerio_lanches_cart_v2';
+  const MIN_DELIVERY_ORDER = 15.0;
 
-  // Estado do carrinho
+  // Estado do carrinho e filtros
   let cart = [];
+  let activeCategory = 'todos';
+  let searchQuery = '';
 
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      cart = JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) {
+        cart = parsed;
+      }
     }
   } catch (err) {
     cart = [];
@@ -29,6 +36,7 @@
   // Elementos do DOM
   const menuCards = document.querySelectorAll('#menuGrid .menu-item');
   const menuTabs = document.querySelectorAll('.menu-tab');
+  const menuSearchInput = document.getElementById('menuSearchInput');
   const headerCartCount = document.getElementById('headerCartCount');
   const mobileCartBar = document.getElementById('mobileCartBar');
   const mobileCartCount = document.getElementById('mobileCartCount');
@@ -60,6 +68,17 @@
     });
   }
 
+  function normalizeText(str) {
+    return String(str || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function buildItemId(name) {
+    return normalizeText(name).replace(/[^a-z0-9]+/g, '-');
+  }
+
   function saveCart() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
@@ -79,26 +98,22 @@
   }
 
   /**
-   * Obtém os dados de um produto a partir dos atributos data-* presentes no HTML
+   * Filtra os cards do cardápio combinando aba de categoria + busca por texto
    */
-  function getProductFromDOM(itemId) {
-    const card = document.querySelector('.menu-item[data-id="' + itemId + '"]');
-    if (!card) return null;
+  function applyMenuFilters() {
+    const normalizedQuery = normalizeText(searchQuery.trim());
 
-    return {
-      id: itemId,
-      name: card.getAttribute('data-name') || '',
-      price: parseFloat(card.getAttribute('data-price') || '0')
-    };
-  }
-
-  /**
-   * Filtra os cards do cardápio usando classes CSS (sem recriar HTML no JS)
-   */
-  function filterMenuByCategory(categoryFilter) {
     menuCards.forEach(function (card) {
-      const itemCategory = card.getAttribute('data-item-category');
-      if (categoryFilter === 'todos' || itemCategory === categoryFilter) {
+      const itemCategory = card.getAttribute('data-item-category') || '';
+      const matchesCategory = activeCategory === 'todos' || itemCategory === activeCategory;
+
+      let matchesSearch = true;
+      if (normalizedQuery.length > 0) {
+        const cardText = normalizeText(card.textContent);
+        matchesSearch = cardText.indexOf(normalizedQuery) !== -1;
+      }
+
+      if (matchesCategory && matchesSearch) {
         card.classList.remove('is-hidden');
       } else {
         card.classList.add('is-hidden');
@@ -107,12 +122,12 @@
   }
 
   /**
-   * Adiciona produto à sacola
+   * Adiciona um item ou variação (Mini/Lanche, Meia/Inteira, Lata/600ml/2L) à sacola
    */
-  function addToCart(itemId) {
-    const product = getProductFromDOM(itemId);
-    if (!product) return;
+  function addItemToCart(name, price) {
+    if (!name || isNaN(price) || price <= 0) return;
 
+    const itemId = buildItemId(name);
     const existing = cart.find(function (entry) {
       return entry.id === itemId;
     });
@@ -121,16 +136,16 @@
       existing.qty += 1;
     } else {
       cart.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
+        id: itemId,
+        name: name,
+        price: price,
         qty: 1
       });
     }
 
     saveCart();
     updateCartUI();
-    showToast('✅ "' + product.name + '" adicionado ao pedido!');
+    showToast('✅ "' + name + '" adicionado ao pedido!');
   }
 
   /**
@@ -218,20 +233,34 @@
 
   // Delegação de eventos de clique
   document.addEventListener('click', function (e) {
-    const addBtn = e.target.closest('[data-add-id]');
-    if (addBtn) {
-      addToCart(addBtn.getAttribute('data-add-id'));
+    // Botões de opções do cardápio (Lanche/Mini, Inteira/Meia, Lata/600ml/2L, Único)
+    const optBtn = e.target.closest('[data-opt-name]');
+    if (optBtn) {
+      const optName = optBtn.getAttribute('data-opt-name');
+      const optPrice = parseFloat(optBtn.getAttribute('data-opt-price') || '0');
+      addItemToCart(optName, optPrice);
       return;
     }
 
+    // Botões de pedido rápido nos Destaques (Spotlight)
+    const quickBtn = e.target.closest('[data-quick-name]');
+    if (quickBtn) {
+      const quickName = quickBtn.getAttribute('data-quick-name');
+      const quickPrice = parseFloat(quickBtn.getAttribute('data-quick-price') || '0');
+      addItemToCart(quickName, quickPrice);
+      return;
+    }
+
+    // Botões +/- dentro do modal da sacola
     const qtyBtn = e.target.closest('[data-qty-id]');
     if (qtyBtn) {
       const id = qtyBtn.getAttribute('data-qty-id');
-      const delta = parseInt(qtyBtn.getAttribute('data-qty-delta'), 10);
+      const delta = parseInt(qtyBtn.getAttribute('data-qty-delta') || '0', 10);
       changeCartQty(id, delta);
       return;
     }
 
+    // Links do rodapé que filtram diretamente uma categoria do cardápio
     const filterLink = e.target.closest('[data-filter-link]');
     if (filterLink) {
       const cat = filterLink.getAttribute('data-filter-link');
@@ -256,9 +285,18 @@
         tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
 
-      filterMenuByCategory(tab.getAttribute('data-category'));
+      activeCategory = tab.getAttribute('data-category') || 'todos';
+      applyMenuFilters();
     });
   });
+
+  // Busca em tempo real no Cardápio
+  if (menuSearchInput) {
+    menuSearchInput.addEventListener('input', function () {
+      searchQuery = menuSearchInput.value || '';
+      applyMenuFilters();
+    });
+  }
 
   // Filtro da Galeria de Marketing
   const galleryBtns = document.querySelectorAll('[data-gallery-filter]');
@@ -310,10 +348,19 @@
       const selectedOrderType = document.querySelector('input[name="orderType"]:checked');
 
       const customerName = nameInput ? nameInput.value.trim() : '';
-      const orderType = selectedOrderType ? selectedOrderType.value : 'Delivery (Entrega)';
+      const orderType = selectedOrderType ? selectedOrderType.value : 'Delivery (20 a 40 min)';
       const customerAddress = addressInput ? addressInput.value.trim() : '';
       const paymentMethod = paymentSelect ? paymentSelect.value : 'PIX';
       const orderNotes = notesInput ? notesInput.value.trim() : '';
+
+      const totalPrice = cart.reduce(function (acc, item) {
+        return acc + item.price * item.qty;
+      }, 0);
+
+      if (orderType.indexOf('Delivery') !== -1 && totalPrice < MIN_DELIVERY_ORDER) {
+        showToast('⚠️ O pedido mínimo para Delivery é de R$ 15,00.');
+        return;
+      }
 
       if (!customerName) {
         showToast('⚠️ Por favor, informe seu nome para o pedido.');
@@ -326,10 +373,6 @@
         if (addressInput) addressInput.focus();
         return;
       }
-
-      const totalPrice = cart.reduce(function (acc, item) {
-        return acc + item.price * item.qty;
-      }, 0);
 
       const lines = [
         '🍔 *NOVO PEDIDO PELO SITE - ROGÉRIO LANCHES & PORÇÕES*',
@@ -381,4 +424,3 @@
   // Inicializa UI do carrinho
   updateCartUI();
 })();
-

@@ -4,12 +4,22 @@ Landing Page de alta conversão, responsiva para **Android, iOS e Desktop**, des
 
 ---
 
-## ✨ Arquitetura 100% Separada
+## ✨ Arquitetura 100% Separada (HTML, CSS e JS Isolados)
 
-- **[`index.html`](index.html):** Estrutura semântica pura em HTML5 (todos os cards do cardápio, galeria e `<template>` do carrinho estão diretamente no HTML, sem nenhum CSS inline ou script embutido).
-- **[`style.css`](style.css):** Folha de estilos isolada na raiz, responsiva (*Mobile-First* para Android e iOS, com suporte a `env(safe-area-inset-bottom)` e `100dvh`).
-- **[`app.js`](app.js):** Lógica JavaScript pura na raiz (manipulação de estados via classes CSS e clonagem de `<template>` nativo, sem strings de HTML misturadas no JS e sem manipulação inline de estilos).
+- **[`index.html`](index.html):** Estrutura semântica pura em HTML5 contendo todos os **72 itens oficiais do cardápio UaiRango**, galeria e `<template>` do carrinho diretamente no HTML (zero CSS inline e zero scripts embutidos).
+- **[`style.css`](style.css):** Folha de estilos isolada na raiz, responsiva (*Mobile-First* para Android e iOS, com suporte a `env(safe-area-inset-bottom)`, `100dvh` e inputs em `16px` para evitar zoom automático no iPhone).
+- **[`app.js`](app.js):** Lógica JavaScript pura na raiz (busca em tempo real, filtro por abas, suporte a tamanhos *Mini/Lanche*, *Meia/Inteira* e *Lata/600ml/2L*, sacola via `<template>` nativo e checkout no WhatsApp — zero strings HTML ou estilos inline no JS).
 - **[`logo.svg`](logo.svg) & [`favicon.svg`](favicon.svg):** Identidade visual e ícone de favoritos vetoriais em SVG na raiz do projeto.
+
+---
+
+## 📋 Cardápio Oficial Integrado (UaiRango)
+
+- **🍔 Lanches Especiais (15 opções):** *Coalho Burguer* (R$ 44), *Big Australiano c/ Fritas* (R$ 55), *CroqBurguer* (R$ 48), *Picanha Duplo Cheddar* (R$ 49), *Costela Burguer* (R$ 42), *Carne Seca Burguer* (R$ 45), *X-Burguer Especial* (R$ 30), *Bacon Especial* (R$ 38), *Salada Especial* (R$ 35), *Frango Especial* (R$ 34), *Tropical Chicken* (R$ 38), *Burguer Linguiça* (R$ 36), *Cheddar Melt* (R$ 40), *Australiano Duplo* (R$ 47) e *Duplo Bacon* (R$ 48).
+- **🥪 Lanches Tradicionais (22 opções c/ Mini ou Lanche):** Linha de Hambúrguer, Pernil, Lombo, Filé de Frango, Contra-Filé (*Americano, X-Filé, Filé c/ Vinagrete*), Calabresa, *X-Fritas*, *Hot Dog*, *Misto Quente*, *Queijo Quente* e *Vegetariano*.
+- **🥩 Porções (13 opções c/ Meia ou Inteira):** *Contra-Filé c/ Pão de Alho* (R$ 85 / R$ 120), *Contra-Filé c/ Fritas* (R$ 85 / R$ 110), *Filé de Tilápia* (R$ 60 / R$ 70), *Bolinho de Tilápia* (R$ 55 / R$ 65), *Batata Especial da Casa* (R$ 55), *Fritas c/ Cheddar e Bacon* (R$ 40 / R$ 50), *Fritas Queijo e Bacon* (R$ 37 / R$ 48), *Fritas Tradicional* (R$ 30 / R$ 40), *Anéis de Cebola* (R$ 38), *Bolinho de Costela 500g* (R$ 37), *Dadinho de Tapioca 500g* (R$ 37), *Calabresa Acebolada* (R$ 45) e *Polenta c/ Queijo* (R$ 35).
+- **🥣 Maionese D'Casa:** *Tradicional* (R$ 4) e *Salsa & Cebolinha* (R$ 4).
+- **🥤 Bebidas & Chocolates:** Refrigerantes (Lata, 600ml e 2L), Sucos Naturais e Lata, Cervejas (Heineken, Original, Brahma, Amstel, Skol, Corona) e Chocolates.
 
 ---
 
@@ -17,7 +27,7 @@ Landing Page de alta conversão, responsiva para **Android, iOS e Desktop**, des
 
 ```text
 RogerioLanches/
-├── index.html                  # HTML5 estruturado puro
+├── index.html                  # HTML5 estruturado puro com cardápio completo
 ├── style.css                   # CSS3 responsivo isolado na raiz
 ├── app.js                      # JavaScript puro isolado na raiz
 ├── logo.svg                    # Logo oficial vetorial em SVG
@@ -27,17 +37,9 @@ RogerioLanches/
 ├── Instagram.pdf               # Referência original do Instagram do cliente
 └── assets/
     └── img/
-        ├── marketing/          # Fotos comerciais geradas/tratadas e posts prontos p/ Instagram
-        │   ├── burger-coalho-brioche.jpg
-        │   ├── chapa-contrafile-pao-alho.jpg
-        │   ├── batata-frita-bacon-queijo.jpg
-        │   ├── petiscos-cumbuca-studio.jpg
-        │   ├── burger-duplo-studio.jpg
-        │   ├── lanche-tradicional-studio.jpg
-        │   ├── post-instagram-burger.jpg
-        │   ├── post-instagram-chapa.jpg
-        │   └── post-instagram-fritas.jpg
-        └── ...                 # Fotos reais organizadas do estabelecimento e prêmio UaiRango
+        ├── cardapio/           # Fotos oficiais de alta resolução dos produtos
+        ├── marketing/          # Fotos comerciais geradas/tratadas e posts 4:5 p/ Instagram
+        └── ...                 # Fotos reais do estabelecimento e prêmio UaiRango
 ```
 
 ---
