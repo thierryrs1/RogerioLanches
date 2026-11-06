@@ -1,7 +1,8 @@
 /**
  * Rogério Lanches & Porções — app.js
  * Centraliza toda a lógica interativa da Landing Page (100% separada do HTML e CSS):
- * - Busca em tempo real e filtro de categorias do cardápio oficial (UaiRango)
+ * - Sincronização em tempo real com a API oficial do UaiRango (GET https://www.uairango.com/api-v2/oauth/cardapio/41441)
+ * - Busca em tempo real e filtro de categorias do cardápio oficial
  * - Suporte a variações de tamanho (Mini / Lanche, Meia / Inteira, Lata / 600ml / 2L)
  * - Sacola de pedidos com persistência em localStorage usando <template> nativo
  * - Envio de pedido formatado direto para o WhatsApp (5535999096662)
@@ -14,7 +15,11 @@
 
   const WHATSAPP_NUMBER = '5535999096662';
   const STORAGE_KEY = 'rogerio_lanches_cart_v2';
-  const MIN_DELIVERY_ORDER = 15.0;
+  const UAIRANGO_STORE_ID = '41441';
+  const UAIRANGO_SLUG = 'rogerio-lanches-porcoes';
+  const API_CARDAPIO_URL = 'https://www.uairango.com/api-v2/oauth/cardapio/' + UAIRANGO_STORE_ID;
+  const API_ESTABELECIMENTO_URL = 'https://www.uairango.com/api-v2/oauth/estabelecimento/slug/' + UAIRANGO_SLUG;
+  let minDeliveryOrder = 15.0;
 
   // Estado do carrinho e filtros
   let cart = [];
@@ -56,6 +61,8 @@
   const toastEl = document.getElementById('toastNotification');
   const addressGroup = document.getElementById('addressGroup');
   const currentYearEl = document.getElementById('currentYear');
+  const storeStatusDot = document.getElementById('storeStatusDot');
+  const storeStatusText = document.getElementById('storeStatusText');
 
   if (currentYearEl) {
     currentYearEl.textContent = String(new Date().getFullYear());
@@ -73,6 +80,10 @@
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function cleanKey(str) {
+    return normalizeText(str).replace(/[^a-z0-9]/g, '');
   }
 
   function buildItemId(name) {
@@ -95,6 +106,161 @@
     showToast._timer = setTimeout(function () {
       toastEl.classList.remove('is-shown');
     }, 2600);
+  }
+
+  /**
+   * Sincronização em tempo real com a API oficial do UaiRango
+   * Atualiza preços, status da loja e valores mínimos automaticamente
+   */
+  async function syncWithUaiRango() {
+    try {
+      // 1. Sincroniza status do estabelecimento (aberto/fechado, pedido mínimo)
+      fetch(API_ESTABELECIMENTO_URL)
+        .then(function (res) {
+          if (!res.ok) return null;
+          return res.json();
+        })
+        .then(function (storeData) {
+          if (!storeData) return;
+          if (typeof storeData.min_pedido === 'number' && storeData.min_pedido > 0) {
+            minDeliveryOrder = storeData.min_pedido;
+          }
+          if (storeStatusDot && storeStatusText && typeof storeData.aberto !== 'undefined') {
+            const isStoreOpen = Number(storeData.aberto) === 1;
+            storeStatusDot.classList.toggle('is-closed', !isStoreOpen);
+            if (isStoreOpen) {
+              storeStatusText.textContent = '🟢 Aberto Agora no UaiRango & WhatsApp • Faça seu pedido!';
+            } else {
+              storeStatusText.textContent = '🔴 Fechado no momento (UaiRango) • Abre às 18h30';
+            }
+          }
+        })
+        .catch(function () {
+          // Mantém valores estáticos do HTML em caso de falha de conexão
+        });
+
+      // 2. Sincroniza cardápio completo da API
+      const response = await fetch(API_CARDAPIO_URL);
+      if (!response.ok) return;
+
+      const data = await response.json();
+      if (!data || typeof data !== 'object') return;
+
+      // Mapeia todas as opções, preços e fotos da API por chave normalizada
+      const priceMap = {};
+      const photoMap = {};
+      const UAIRANGO_CDN_PRODUTOS = 'https://cdn2.uairango.com/produtos/';
+
+      Object.keys(data).forEach(function (catKey) {
+        const category = data[catKey];
+        if (!category || !Array.isArray(category.inteira)) return;
+
+        category.inteira.forEach(function (product) {
+          const prodClean = cleanKey(product.produto);
+
+          // Salva foto em alta resolução caso exista no UaiRango
+          if (product.foto && typeof product.foto === 'string') {
+            const highResFoto = product.foto.replace('_min.', '.');
+            const fullPhotoUrl = UAIRANGO_CDN_PRODUTOS + highResFoto;
+            photoMap[prodClean] = fullPhotoUrl;
+          }
+
+          if (!Array.isArray(product.opcoes)) return;
+
+          product.opcoes.forEach(function (op) {
+            const opDescClean = cleanKey(op.descricao);
+            const price = Number(op.valorAtual || op.valor || 0);
+            if (price <= 0) return;
+
+            const comboKey = prodClean + '_' + opDescClean;
+            priceMap[comboKey] = price;
+
+            // Se for opção única, indexa diretamente pelo nome do produto
+            if (product.opcoes.length === 1) {
+              priceMap[prodClean] = price;
+            }
+          });
+        });
+      });
+
+      // Atualiza fotos dinamicamente no DOM caso o produto tenha imagem cadastrada/alterada no UaiRango
+      menuCards.forEach(function (card) {
+        const titleEl = card.querySelector('.menu-item__title');
+        const imgEl = card.querySelector('.menu-item__img-wrap img');
+        if (!titleEl || !imgEl) return;
+
+        const titleClean = cleanKey(titleEl.textContent);
+        let newPhotoUrl = photoMap[titleClean];
+        if (!newPhotoUrl) {
+          for (const k in photoMap) {
+            if (titleClean.indexOf(k) !== -1 || k.indexOf(titleClean) !== -1) {
+              newPhotoUrl = photoMap[k];
+              break;
+            }
+          }
+        }
+
+        if (newPhotoUrl && imgEl.getAttribute('src') !== newPhotoUrl) {
+          imgEl.setAttribute('src', newPhotoUrl);
+        }
+      });
+
+      // Atualiza botões [data-opt-name] e [data-opt-price] no DOM
+      const optButtons = document.querySelectorAll('[data-opt-name]');
+      optButtons.forEach(function (btn) {
+        const optName = btn.getAttribute('data-opt-name');
+        const optClean = cleanKey(optName);
+
+        let newPrice = priceMap[optClean];
+        if (!newPrice) {
+          // Busca correspondência por proximidade de chave
+          for (const k in priceMap) {
+            if (optClean.indexOf(k) !== -1 || k.indexOf(optClean) !== -1) {
+              newPrice = priceMap[k];
+              break;
+            }
+          }
+        }
+
+        if (typeof newPrice === 'number' && newPrice > 0) {
+          btn.setAttribute('data-opt-price', newPrice.toFixed(2));
+          const priceStrong = btn.querySelector('strong');
+          if (priceStrong) {
+            priceStrong.textContent = formatBRL(newPrice);
+          }
+        }
+      });
+
+      // Atualiza botões de destaque [data-quick-name]
+      const quickButtons = document.querySelectorAll('[data-quick-name]');
+      quickButtons.forEach(function (qBtn) {
+        const qName = qBtn.getAttribute('data-quick-name');
+        const qClean = cleanKey(qName);
+
+        let newQPrice = priceMap[qClean];
+        if (!newQPrice) {
+          for (const k in priceMap) {
+            if (qClean.indexOf(k) !== -1 || k.indexOf(qClean) !== -1) {
+              newQPrice = priceMap[k];
+              break;
+            }
+          }
+        }
+
+        if (typeof newQPrice === 'number' && newQPrice > 0) {
+          qBtn.setAttribute('data-quick-price', newQPrice.toFixed(2));
+          const parentCard = qBtn.closest('.spotlight-card');
+          if (parentCard) {
+            const cardPriceVal = parentCard.querySelector('.price-value');
+            if (cardPriceVal) {
+              cardPriceVal.textContent = formatBRL(newQPrice);
+            }
+          }
+        }
+      });
+    } catch (err) {
+      // Falha silenciosa: mantém os dados do HTML sem quebrar a experiência do usuário
+    }
   }
 
   /**
@@ -357,8 +523,8 @@
         return acc + item.price * item.qty;
       }, 0);
 
-      if (orderType.indexOf('Delivery') !== -1 && totalPrice < MIN_DELIVERY_ORDER) {
-        showToast('⚠️ O pedido mínimo para Delivery é de R$ 15,00.');
+      if (orderType.indexOf('Delivery') !== -1 && totalPrice < minDeliveryOrder) {
+        showToast('⚠️ O pedido mínimo para Delivery é de ' + formatBRL(minDeliveryOrder) + '.');
         return;
       }
 
@@ -423,4 +589,7 @@
 
   // Inicializa UI do carrinho
   updateCartUI();
+
+  // Executa sincronização em tempo real com a API do UaiRango
+  syncWithUaiRango();
 })();
