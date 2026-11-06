@@ -359,10 +359,9 @@
           </div>
         </div>
 
-        <!-- Aviso Oficial de Horário Estendido -->
+        <!-- Aviso Oficial de Horário Estendido e Entrega -->
         <div class="late-night-notice">
-          <span>🌙 <strong>Aviso de Madrugada:</strong> Sextas e sábados atendemos até as <strong>02h00</strong> (a
-            partir das 01h00 somente para retirada no balcão). Pedido mínimo delivery: R$ 15,00.</span>
+          <span>🌙 <strong>Aviso de Horário &amp; Entrega:</strong> Sextas e sábados atendemos até as <strong>02h00</strong> (a partir das 01h00 somente para retirada no balcão). 🛵 <strong>A taxa de entrega é calculada à parte</strong> conforme seu endereço e informada via WhatsApp. Pedido mínimo delivery: R$ 15,00.</span>
         </div>
 
         <!-- Grid de Produtos em HTML Estruturado -->
@@ -1930,6 +1929,7 @@ Acompanha batata frita.</p>
             <label for="customerAddress">Endereço de Entrega (Rua, Nº, Bairro) *</label>
             <input type="text" id="customerAddress" name="customerAddress"
               placeholder="Ex: Rua Governador Valadares, 150 - Centro" autocomplete="street-address">
+            <small class="delivery-notice">🛵 <strong>Atenção:</strong> A taxa de entrega é cobrada à parte conforme o bairro/endereço e o valor exato será enviado pelo atendente no WhatsApp.</small>
           </div>
 
           <div class="form-group">
@@ -1955,6 +1955,9 @@ Acompanha batata frita.</p>
           <span>Total dos Itens:</span>
           <strong id="cartTotalValue">R$ 0,00</strong>
         </div>
+        <p class="cart-delivery-note">
+          🛵 Taxa de entrega calculada à parte (informada pelo WhatsApp).
+        </p>
         <button type="button" class="btn btn--primary btn--block btn--lg" id="sendWhatsAppOrderBtn">
           📲 Enviar Pedido no WhatsApp
         </button>

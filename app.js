@@ -546,6 +546,9 @@
 
       lines.push('----------------------------------------');
       lines.push('💰 *Total dos Itens:* ' + formatBRL(totalPrice));
+      if (orderType.indexOf('Delivery') !== -1) {
+        lines.push('🛵 *Taxa de Entrega:* A calcular conforme endereço');
+      }
       lines.push('💳 *Pagamento:* ' + paymentMethod);
 
       if (orderNotes) {

@@ -1658,6 +1658,25 @@ ul {
   color: var(--gold-primary);
 }
 
+.delivery-notice {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--gold-primary);
+  background: rgba(255, 184, 0, 0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.cart-delivery-note {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
 /* ==========================================================================
    FLOATING WHATSAPP & MOBILE STICKY BAR (ANDROID & iOS)
    ========================================================================== */
