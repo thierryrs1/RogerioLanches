@@ -8,7 +8,7 @@ Landing Page de alta conversão, responsiva para **Android, iOS e Desktop**, des
 
 - **[`index.html`](index.html):** Estrutura semântica pura em HTML5 contendo todos os **72 itens oficiais do cardápio UaiRango**, galeria e `<template>` do carrinho diretamente no HTML (zero CSS inline e zero scripts embutidos).
 - **[`style.css`](style.css):** Folha de estilos isolada na raiz, responsiva (*Mobile-First* para Android e iOS, com suporte a `env(safe-area-inset-bottom)`, `100dvh` e inputs em `16px` para evitar zoom automático no iPhone).
-- **[`app.js`](app.js):** Lógica JavaScript pura na raiz com **sincronização automática em tempo real via GET na API do UaiRango** (`https://www.uairango.com/api-v2/oauth/cardapio/41441` e `/estabelecimento/slug/rogerio-lanches-porcoes`), busca em tempo real, suporte a tamanhos (*Mini/Lanche*, *Meia/Inteira* e *Lata/600ml/2L*), sacola via `<template>` nativo e checkout no WhatsApp.
+- **[`app.js`](app.js):** Lógica JavaScript pura na raiz com **sincronização automática em tempo real de preços, fotos e status via API do UaiRango** (`https://www.uairango.com/api-v2/oauth/cardapio/41441` e `/estabelecimento/slug/rogerio-lanches-porcoes`), busca em tempo real, suporte a tamanhos (*Mini/Lanche*, *Meia/Inteira* e *Lata/600ml/2L*), sacola via `<template>` nativo e checkout no WhatsApp.
 - **[`logo.svg`](logo.svg) & [`favicon.svg`](favicon.svg):** Identidade visual e ícone de favoritos vetoriais em SVG na raiz do projeto.
 
 ---
