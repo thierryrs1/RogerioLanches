@@ -6,7 +6,6 @@
  * - Suporte a variações de tamanho (Mini / Lanche, Meia / Inteira, Lata / 600ml / 2L)
  * - Sacola de pedidos com persistência em localStorage usando <template> nativo
  * - Envio de pedido formatado direto para o WhatsApp (5535999096662)
- * - Filtro da Galeria & Kit de Marketing
  * - Menu Mobile responsivo (Android & iOS)
  */
 
@@ -463,25 +462,6 @@
       applyMenuFilters();
     });
   }
-
-  // Filtro da Galeria de Marketing
-  const galleryBtns = document.querySelectorAll('[data-gallery-filter]');
-  const galleryCards = document.querySelectorAll('#marketingGallery .m-card');
-
-  galleryBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      galleryBtns.forEach(function (b) {
-        b.classList.remove('active');
-      });
-      btn.classList.add('active');
-      const filterType = btn.getAttribute('data-gallery-filter');
-
-      galleryCards.forEach(function (card) {
-        const matches = filterType === 'all' || card.getAttribute('data-type') === filterType;
-        card.classList.toggle('is-hidden', !matches);
-      });
-    });
-  });
 
   // Abrir e fechar sacola
   if (openCartBtn) openCartBtn.addEventListener('click', openCartModal);

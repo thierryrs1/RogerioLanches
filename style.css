@@ -1203,104 +1203,6 @@ ul {
 }
 
 /* ==========================================================================
-   MARKETING KIT & GALLERY
-   ========================================================================== */
-.gallery-switch {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 34px;
-}
-
-.gallery-switch__btn {
-  padding: 10px 18px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-weight: 700;
-  font-size: 0.88rem;
-  min-height: 42px;
-  transition: all 0.2s ease;
-}
-
-.gallery-switch__btn.active {
-  background: var(--gold-primary);
-  color: #0b0b0d;
-  border-color: var(--gold-primary);
-}
-
-.marketing-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.m-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.m-card__img-box {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  background: #0e0e11;
-  overflow: hidden;
-}
-
-.m-card__img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s ease;
-}
-
-.m-card:hover .m-card__img-box img {
-  transform: scale(1.03);
-}
-
-.m-card__tag {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: var(--gold-primary);
-  color: #0b0b0d;
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-}
-
-.m-card__tag--dark {
-  background: rgba(11, 11, 13, 0.85);
-  color: var(--gold-primary);
-  border: 1px solid var(--border-gold);
-}
-
-.m-card__bar {
-  padding: 14px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.m-card__bar strong {
-  display: block;
-  font-size: 0.92rem;
-}
-
-.m-card__bar span {
-  font-size: 0.76rem;
-  color: var(--text-muted);
-}
-
-/* ==========================================================================
    FAQ
    ========================================================================== */
 .faq-container {
@@ -1858,8 +1760,7 @@ ul {
 
   .features__grid,
   .spotlight-grid,
-  .menu-grid,
-  .marketing-gallery {
+  .menu-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1941,7 +1842,6 @@ ul {
   .features__grid,
   .spotlight-grid,
   .menu-grid,
-  .marketing-gallery,
   .footer__grid {
     grid-template-columns: 1fr;
   }
