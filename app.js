@@ -157,6 +157,9 @@
         category.inteira.forEach(function (product) {
           const prodClean = cleanKey(product.produto);
 
+          // Ignora itens de aviso/texto do UaiRango (ex: "......" cadastrado com R$ 1,00)
+          if (!prodClean || prodClean.length < 3) return;
+
           // Salva foto em alta resolução caso exista no UaiRango
           if (product.foto && typeof product.foto === 'string') {
             const highResFoto = product.foto.replace('_min.', '.');
@@ -171,8 +174,11 @@
             const price = Number(op.valorAtual || op.valor || 0);
             if (price <= 0) return;
 
-            const comboKey = prodClean + '_' + opDescClean;
-            priceMap[comboKey] = price;
+            // Chave composta produto + opcao com e sem separador
+            if (opDescClean) {
+              priceMap[prodClean + '_' + opDescClean] = price;
+              priceMap[prodClean + opDescClean] = price;
+            }
 
             // Se for opção única, indexa diretamente pelo nome do produto
             if (product.opcoes.length === 1) {
@@ -212,9 +218,9 @@
 
         let newPrice = priceMap[optClean];
         if (!newPrice) {
-          // Busca correspondência por proximidade de chave
+          // Busca correspondência por proximidade de chave com tamanho mínimo para evitar falsos positivos
           for (const k in priceMap) {
-            if (optClean.indexOf(k) !== -1 || k.indexOf(optClean) !== -1) {
+            if (k.length >= 6 && (optClean.indexOf(k) !== -1 || k.indexOf(optClean) !== -1)) {
               newPrice = priceMap[k];
               break;
             }
@@ -239,7 +245,7 @@
         let newQPrice = priceMap[qClean];
         if (!newQPrice) {
           for (const k in priceMap) {
-            if (qClean.indexOf(k) !== -1 || k.indexOf(qClean) !== -1) {
+            if (k.length >= 6 && (qClean.indexOf(k) !== -1 || k.indexOf(qClean) !== -1)) {
               newQPrice = priceMap[k];
               break;
             }
